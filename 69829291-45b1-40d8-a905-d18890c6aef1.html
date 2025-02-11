@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Talos Principle: Gold Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Talos Principle: Gold Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-2/10/2025">2/10/2025</a> 16:12:51</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-2/10/2025">2/10/2025</a> 16:13:17</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Unknown">Unknown</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-7/23/2015">7/23/2015</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Puzzle">Puzzle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Croteam">Croteam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Devolver Digital">Devolver Digital</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/game/the_talos_principle_gold_edition" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<img src="https://items.gog.com/the_talos_principle/header.jpg" />
+<br>
+
+<br>
+As if awakening from a deep sleep, you find yourself in a strange, contradictory world of ancient ruins and advanced technology. Tasked by your creator with solving a series of increasingly complex puzzles, you must decide whether to have faith or to ask the difficult questions: Who are you? What is your purpose? And what are you going to do about it?<h4>Features:</h4><ul class="bb_ul"><li>Overcome more than 120 immersive puzzles in a stunning world.
+<br>
+</li><li>Divert drones, manipulate laser beams and even replicate time to prove your worth - or to find a way out.
+<br>
+</li><li>Explore a story about humanity, technology and civilization. Uncover clues, devise theories, and make up your own mind.
+<br>
+</li><li>Choose your own path through the game's non-linear world, solving puzzles your way.
+<br>
+</li><li>But remember: choices have consequences and somebody's always watching you.</li></ul>
+<br>
+
+<br>
+<b>Prototype DLC includes:</b><br>
+<ul class="bb_ul"><li><b>Prototype Levels</b> - Includes more than 100 puzzles from early prototype development stage and 1 exclusive level from early beta version, not present in the final game.
+<br>
+</li><li><b>Elohim Voice - US version</b> - Elohim voice narrated by Serious Sam narrator Bill Jurney.
+<br>
+</li><li><b>Elohim Voice - Writer's prototype</b> - Elohim voice narrated by The Talos Principle's writer Jonas Kyratzes.</li></ul>
+<img src="https://items.gog.com/the_talos_principle/prototype_4.png">
+<br><br>
+
+<b>The Talos Principle: Road to Gehenna</b> follows the narrative of Uriel, Elohim's messenger, as he explores a strange, hidden part of the simulation on a mission of mercy and redemption in an attempt to free the souls of the damned at all costs.<br>
+
+This substantial expansion consists of four episodes that take experienced players through some of the most advanced and challenging puzzles yet. The Talos Principle writers Tom Jubert and Jonas Kyratzes have returned to pen the expansion and show players an entirely different side of Elohim's world through a journey to Gehenna filled with new characters and a new society with its own history and philosophy.
+<img src="https://items.gog.com/the_talos_principle/358470_0.png">
+
+<br>
+<br>
+The new <b>Serious DLC</b> replaces the godlike voice of Elohim with completely NEW, rewritten and humorous Serious Sam script. <br>
+
+Serious Sam voice has been recorded by longtime Serious Sam voice actor John J. Dick.<br>
+
+It also includes a new Serious Sam player model for use in The Talos Principle.
+<img src="https://items.gog.com/the_talos_principle/serious.jpg" />
+
+<br><br>
+<b>The Talos Principle - Bonus Content</b> includes:
+<br>
+<img src="https://items.gog.com/the_talos_principle/makingof.png" />
+<br>
+• <b>Documentary Video</b>* - Making-Of The Talos Principle video featuring behind-the-scenes footage and exclusive developer interviews with Croteam members. This documentary takes a look at how the game was made.
+<br>
+
+<br>
+<img src="https://items.gog.com/the_talos_principle/booklet.png" />
+<br>
+• <b>Digital Terminal Booklet</b>** - The digital terminal booklet contains over 100 pages of text found in game terminals.
+<br>
+
+<br>
+<img src="https://items.gog.com/the_talos_principle/boxart.png" />
+<br>
+• <b>Box Art</b>** - Includes DVD label and DVD sleeve (front and back), so you can create your own retail The Talos Principle DVD box.
+<br>
+
+<br>
+<img src="https://items.gog.com/the_talos_principle/wallpapers.png" />
+<br>
+• <b>Wallpapers</b> - Eight exclusive hi-res (1920x1080) images as wallpapers.
+<br>
+
+<br>
+<img src="https://items.gog.com/the_talos_principle/posters.png" />
+<br>
+• <b>Posters, Stickers and Postcards</b> - Three posters used at E3 2014 show, one sticker art for printing Talos related stickers on sticker paper and two postcards (two front and one back) used at Gamescom 2014 show. 
+<br>
+
+<br>
+• <b>Banners</b>  - Two roll-up banners used at Pax Prime 2014 show.
+<br>
+
+<br>
+* This item is only available in Croatian audio with English sub-titles
+<br>
+** English version only
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<img src="https://items.gog.com/the_talos_principle/ost.jpg" />
+
+<b>The Talos Principle - Soundtrack</b> is the official soundtrack which includes a collection of 25 amazing tracks from the game, plus 2 bonus tracks, composed and now also specially remixed by Serious Sam's composer Damjan Mravunac. <br><br>
+
+<b>TRACK LIST:</b><br>
+01. Welcome To Heaven (2:21)<br>
+02. When In Rome (2:27)<br>
+03. Trials (3:48)<br>
+04. The Sigils Of Our Name (2:32)<br>
+05. Temple Of My Father (2:48)<br>
+06. Made Of Words (4:45)<br>
+07. Sanctuary (1:54)<br>
+08. A Land Of Great Beauty (3:18)<br>
+09. A Land Of Ruins (2:42)<br>
+10. Before Was Only Chaos (2:16)<br>
+11. All Else Is Decay (2:53)<br>
+12. The Worlds Of My Garden Are Many (2:49)<br>
+13. The Temple Of The Sands (2:00)<br>
+14. The Guardians (2:20)<br>
+15. The Dance Of Eternity (1:24)<br>
+16. Your Wisdom Grows (2:09)<br>
+17. Blessed And Beloved (1:49)<br>
+18. A Land Of Tombs (2:16)<br>
+19. To Seek Salvation (2:21)<br>
+20. Do With It As You Will (2:09)<br>
+21. Virgo Serena (1:31)<br>
+22. The Forbidden Tower (3:44)<br>
+23. Out There (2:49)<br>
+24. Heavenly Clouds (2:40)<br>
+25. False God (3:57)<br><br>
+
+<b>BONUS TRACKS:</b><br>
+26. Extra Bonus - Blessed Messenger (0:58)<br>
+27. Extra Bonus - The End Of The Process (Finale) (3:29)<br>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

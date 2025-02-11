@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Blood West</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Blood West</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-2/10/2025">2/10/2025</a> 16:12:51</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-2/10/2025">2/10/2025</a> 16:13:15</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Unknown">Unknown</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-12/5/2023">12/5/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Hyperstrange">Hyperstrange</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-New Blood Interactive">New Blood Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1587130/Blood_West" target="_blank">Steam</a><br/><a href="https://www.youtube.com/c/Hyperstrange" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/hyperstrange" target="_blank">Facebook</a><br/><a href="https://twitter.com/HYPERSTRANGE" target="_blank">Twitter</a><br/><a href="https://discord.gg/5fCZK562jT" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Blood%20West" target="_blank">Twitch</a><br/><a href="https://www.gog.com/en/game/blood_west" target="_blank">GOG</a><br/><a href="https://store.epicgames.com/en-US/p/blood-west-8f6ffd" target="_blank">Epic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Weird West legends meet eldritch horror in <b>BLOOD WEST</b>, an immersive stealth FPS. Become the Undead Gunslinger, doomed to roam the barren lands until he finds the means to purge their curse and free his soul. No, this isn’t your typical Wild West desperado redemption arc. This is a damnation arc.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_episodes_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+The Canyons, the Swamp, and the Mountains. Each swarming with abominable monsters and unholy demons, these are open-ended worlds for you to explore freely at your own pace. It will take the player over 20 hours on average to complete all three scenarios, and over 35 if they want to see everything the barren lands have to offer.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_stealth_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+<b>Blood West</b> is a stealth FPS inspired by the genre classics such as the Thief series (whose fans will be happy to hear the voice of Stephen Russell, the actor voicing the master-thief Garrett, returning here as the protagonist), S.T.A.L.K.E.R. games, or - from the contemporary catalog - Hunt: Showdown. The gameplay rewards the careful approach: scouting the area, stalking your enemies, and striking from the shadows. Can you figure out a way to clear a fort full of ghouls and monsters without raising an alarm?
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_horror_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+The Barren Lands present the player with a nightmarish, twisted vision of the Wild West legends. The curse that has befallen the realm has corrupted every living thing, defiled the land itself, while summoning restless spirits and dark entities. In this mixture of gunslinger pulp and Lovecraftian horror, dark occult magick presents just as much of a threat as sudden lead poisoning.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_characters_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+In <b>Blood West</b> you will meet many colorful, yet strangely twisted, fully-voiced NPCs. Just as much prisoners of the Barren Lands as you are, they will sometimes share their unusual stories and send you on various missions. Play nice and they might reward you or become your allies. Cross them and risk their wrath.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_secrets_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+The game won’t hold your hand. You’ll have to explore the land for yourself (buying a map from a vendor might prove useful!), and figure out your own way to approach quests. As you poke around the three expansive maps, keep an eye out for hidden places and secret stashes. There’s gold in the mountains! Fair warning - it’s probably cursed.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_brutal_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+If sneaking around isn’t exactly your thing, or you feel that you have a power advantage over your enemies, you can always take the head-on approach and meet your enemies guns blazing. <b>Blood West</b> comes from the creators of the fan-favorite boomer shooter <b>POSTAL: Brain Damaged</b>, so much gratuitous fantasy violence and pixelated blood splatter is to be expected!
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_inventory_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+One man’s hell might be another hoarder’s paradise! From simple one-use items like bandages, through medical tinctures, explosives and incendiaries, straight to arcane artifacts that - once slotted - can change the way you play the game, the Barren Lands are just filled with STUFF. There are tons of useful items to discover, and there’s a special player’s stash crate for all those super-rare potions that you’ll hoard and never use.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_weapons_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+A gunslinger without a gun would be just a regular slinger. Where’s the fun in that? <b>Blood West</b> makes sure you’ll have plenty of weapons to choose from. Revolvers, rifles, shotguns, carabines - a great variety of firearms, from standard army-issue to those infused with powerful magic, or straight-up possessed. And if you prefer not to cause a ruckus, there’s a wide selection of hand-to-hand combat weapons and archery weapons to pick your favorites from.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/blood_west/mp4/BLOOD_WEST_GIF_skills_EN.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+The RPG-like perk-based progression system in <b>Blood West</b> will allow you to highly customize the gameplay experience to your liking. Become a stealthy hunter, a revolver-fanning gunman or a relentless berserker. You will gain experience and progress through the skill tree, while discovering new artifacts in each of the scenarios that will bestow on you additional abilities. Combining skills and load-out creates more possible playstyles than you’d normally be able to explore in one playthrough.<h4>Are you ready to take back the frontier from the dark forces of demonic corruption and earn the right to move on to a better world? The Barren Lands call you, Gunslinger!</h4>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

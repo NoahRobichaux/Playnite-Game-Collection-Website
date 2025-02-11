@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Falconeer</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Falconeer</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-2/9/2025">2/9/2025</a> 0:26:17</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-2/9/2025">2/9/2025</a> 0:27:53</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Unknown">Unknown</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-11/10/2020">11/10/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-52">52</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-72">72</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Tomas Sala">Tomas Sala</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Wired Productions">Wired Productions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1135260" target="_blank">Steam</a><br/><a href="https://www.thefalconeer.com/" target="_blank">Official</a><br/><a href="https://facebook.com/thefalconeer" target="_blank">Facebook</a><br/><a href="https://twitter.com/TheFalconeer" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/wired_productions_games" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/WiredProductionsLtd" target="_blank">YouTube</a><br/><a href="https://discord.gg/falconeer" target="_blank">Discord</a><br/><a href="https://www.gog.com/game/the_falconeer" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/p/the-falconeer" target="_blank">Epic</a><br/><a href="https://www.reddit.com/r/WiredP/" target="_blank">Reddit</a><br/><a href="https://en.wikipedia.org/wiki/The_Falconeer" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/The%20Falconeer" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<video muted="" preload="auto" loop="" autoplay="autoplay" style="margin: auto;display:block;width:100%">
+<source src="https://items.gog.com/the_falconeer/wingman.gif.mp4" type="video/mp4"></video>
+
+<h4><b>FROM THE CLOUDS THEY DIVE, THE SCREAMS OF BATTLE IN THEIR LUNGS…</b></h4>
+Generations of poisonous decisions and treason swirl in the deep, as factions collide.
+<br>
+
+<br>
+Become the Falconeer and soar through the skies aboard a devastatingly powerful Warbird. Uncover secrets lost to the sea as you join or oppose different factions and clans scattered throughout The Great Ursee. Take advantage of multiple Falconeer classes with individual stats, weapons and warbirds that can be upgraded through winning battles, completing quests, discovering secrets, or applying Mutagens or Chants. Use ocean thermals and energy to dive, dodge, barrel-roll, and twist to gain an advantage.
+<br>
+
+<br>
+<video muted="" preload="auto" loop="" autoplay="autoplay" style="margin: auto;display:block;width:100%">
+<source src="https://items.gog.com/the_falconeer/murenal.gif.mp4" type="video/mp4"></video>
+<br>
+
+<br>
+The Falconeer is an open-world air combat game, featuring fast, brutal aerial dogfights and deep exploration of an incredible fantasy open-world set not only above the clouds, but also amongst the waves and down through the sunken, ocean depths.
+<h4>EXPLORE AND FLY</h4>
+The Great Ursee is an ancient place, filled with beautifully detailed locations to find and explore, not only above the clouds, but also below the waves.  Discover sparks of order and civilization as well as wild and dangerous coasts filled with treasure, pirates, lost technology and amazing creatures.
+<h4>FAST, BRUTAL DOGFIGHTING</h4>
+Combat in the Falconeer is fast, brutal and devastating. The unique abilities of Warbirds allow for an unparalleled level of control and movability, creating epic fights with mounted enemies such as War Falcons, Weaver dragons, Mantarays and Razorbeetles.
+<h4>FACTIONS</h4>
+The rich and powerful yield fleets of airships and Falconeers to protect their assets, while revolution and dissent are brewing among the downtrodden and poor. Join and support your faction, flying missions that may change the fate of your comrades as well as yourself.
+<h4>MULTIPLE EPIC STORYLINES</h4>
+Choose your unique character’s origin story, and build an unbreakable bond between player and bird, through one of multiple playable campaigns, encompassed by a world packed with side quests and free-flying exploration you won’t want to miss!
+<h4>UPGRADED WINGS</h4>
+Purchase new weapons, armour, cosmetics, and mutagens to perfect your mount – whatever the cost.<br>
+<br>
+<h4>Introducing The Kraken</h4>
+The first free content update for The Falconeer. Featuring new exploration and discovery experiences with Cartographer and Wreckdiver guild locations and perilous under water adventures.
+<ul>
+<li><b>Exploration Missions: </b>an ancient guild of map makers located at Cartohom, that will send players out on exploration missions to find and discover new locations to earn splinters.</li>
+<li><b>Wreck Diving Missions: </b>an ancient guild of master divers located at Batis, see the depths up close with under water missions to recover wrecks and discover ancient treasures that can also uncover dangerous sea creatures and the mighty "Kraken", so beware!</li>
+</ul>
+<br>
+&nbsp;
+
+<h4>ABOUT TOMAS SALA</h4>
+Tomas Sala is an independent game artist and designer as well as the co-founder of game studio Little Chicken Game Company. Tomas is best known to most gamers for his exotic Skyrim Mod series: Moonpath to Elsweyr, and has developed a unique visual style over the years that have helped turn helped turn games such as Rekt! (iOS/Switch), SXPD (iOS) and TrackLab (PSVR) into unique visual and interactive experiences
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
