@@ -25,23 +25,26 @@ html {
   margin: 0;                                          /* no margins */
   background-color: black;                            /* black background */
   vertical-align: middle;                             /* align vertical middle */
-  height: 48px;
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
 }
 
 .title {
-  width: 100%;                                      /* title container width 100% */
-  grid-column: 1 / span 3;                          /* column 1 but spans 3 */
-  grid-row: 1;                                      /* row 1 */
-  height: 48px;
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
 }
 .cards {                                              /* empty not used here */
 }
 
 .card {
-  display: grid;                                    /* container which is the grid */
-  grid-template-columns: min-content;               /* size columns to minimum content */
-  grid-template-rows: min-content min-content;      /* size rows to minimum content */
-  height: 100vh;                                    /* 100% viewport height */
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
 }
 
 .detailstitle{
@@ -65,9 +68,9 @@ html {
  
 .detailstitle h3,
 .descriptiontitle h3 {
-  border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
-  padding: 5px;                                      /* add some padding */
-  color: #ccc;                                       /* text color of the titles */
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
 }
 
 .detailstable th, td {
@@ -85,6 +88,10 @@ html {
   padding: 5px;                                        /* add some padding */
 }
 
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
 .descriptiontitle {
 	grid-column: 2;                                    /* column 2 of grid */
 	grid-row: 2;                                       /* row 2 of grid */
@@ -94,18 +101,19 @@ html {
 
 
 .description {
-  color: #ccc;                                       /* text color */
-  grid-column: 2;                                    /* 2nd column of grid */
-  grid-row: 3;                                       /* 3rd row of grid */
-  overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
-  overflow-x:hidden;                                 /* prevent horizontal scrollbar */
-  padding-left: 10px;                                /* some padding left */
-  padding-right: 10px;                               /* some padding right */
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
 }
 
 .description img {
-  max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
 }
+
 
 .MenuButton {
   border: none;                                        /* Remove borders */
@@ -168,11 +176,11 @@ a:active {
 
 		</style>
 	</head>
-	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('cd893afa-2f73-4890-b370-36e0abd903dc/012746eb-f449-44e4-8f19-e96b911d72a1.jpg');">
 		<div class="cards">
 			<div class="card">
 				<div class="title">
-					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Harvest Moon: A New Beginning</h2>
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src=""/> Harvest Moon: A New Beginning</h2>
 				</div>
 				<div class="detailstitle">
 				<H3>Details</H3>
@@ -181,69 +189,73 @@ a:active {
 					<div style="overflow: auto;">
 						<TABLE class="detailstable">
 							<col style="width:50%" />
-							<col style="width:50%" />							<TR>
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="cd893afa-2f73-4890-b370-36e0abd903dc/40c552e2-9650-4353-95e9-3b57c71d38d9.jpg"/></TD>
+							</TR>
+							<TR>
 								<TD>Playtime</TD>
 								<TD>Not Played</TD>
 							</TR>
 							<TR>
 								<TD>Last Activity</TD>
-								<TD><a href="default%20table%20text_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
 							</TR>
 							<TR>
 								<TD>Added</TD>
-								<TD><a href="default%20table%20text_added_descending_name_ascending.html#quicklink-4/25/2024">4/25/2024</a> 14:18:58</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-4/25/2024">4/25/2024</a> 14:18:58</TD>
 							</TR>
 							<TR>
 								<TD>Modified</TD>
-								<TD><a href="default%20table%20text_modified_descending_name_ascending.html#quicklink-4/25/2024">4/25/2024</a> 14:43:54</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-4/25/2024">4/25/2024</a> 14:43:54</TD>
 							</TR>
 							<TR>
 								<TD>Completion Status</TD>
-								<TD><a href="default%20table%20text_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+								<TD><a href="default_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
 							</TR>
 							<TR>
 								<TD>Library</TD>
-								<TD><a href="default%20table%20text_library_ascending_name_ascending.html#quicklink-Playnite">Playnite</a></TD>
+								<TD><a href="default_library_ascending_name_ascending.html#quicklink-Playnite">Playnite</a></TD>
 							</TR>
 							<TR>
 								<TD>Source</TD>
-								<TD><a href="default%20table%20text_source_ascending_name_ascending.html#quicklink-"></a></TD>
+								<TD><a href="default_source_ascending_name_ascending.html#quicklink-"></a></TD>
 							</TR>
 							<TR>
 								<TD>Platform</TD>
-								<TD><a href="default%20table%20text_platform_ascending_name_ascending.html#quicklink-Nintendo 3DS">Nintendo 3DS</a><br/></TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-Nintendo 3DS">Nintendo 3DS</a><br/></TD>
 							</TR>
 							<TR>
 								<TD>Release Date</TD>
-								<TD><a href="default%20table%20text_releasedate_descending_name_ascending.html#quicklink-10/19/2012">10/19/2012</a> </TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-10/19/2012">10/19/2012</a> </TD>
 							</TR>
 							<TR>
 								<TD>Community Score</TD>
-								<TD><a href="default%20table%20text_communityscore_descending_name_ascending.html#quicklink-62">62</a></TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-62">62</a></TD>
 							</TR>
 							<TR>
 								<TD>Critic Score</TD>
-								<TD><a href="default%20table%20text_criticscore_descending_name_ascending.html#quicklink-75">75</a></TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-75">75</a></TD>
 							</TR>
 							<TR>
 								<TD>User Score</TD>
-								<TD><a href="default%20table%20text_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
 							</TR>
 							<TR>
 								<TD>Genre</TD>
-								<TD><a href="default%20table%20text_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20table%20text_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20table%20text_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Simulator">Simulator</a><br/></TD>
 							</TR>
 							<TR>
 								<TD>Developer</TD>
-								<TD><a href="default%20table%20text_developer_ascending_name_ascending.html#quicklink-Marvelous AQL">Marvelous AQL</a><br/></TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Marvelous AQL">Marvelous AQL</a><br/></TD>
 							</TR>
 							<TR>
 								<TD>Publisher</TD>
-								<TD><a href="default%20table%20text_publisher_ascending_name_ascending.html#quicklink-Marvelous AQL">Marvelous AQL</a><br/><a href="default%20table%20text_publisher_ascending_name_ascending.html#quicklink-Marvelous AQL Europe">Marvelous AQL Europe</a><br/><a href="default%20table%20text_publisher_ascending_name_ascending.html#quicklink-Natsume Inc.">Natsume Inc.</a><br/></TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Marvelous AQL">Marvelous AQL</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Marvelous AQL Europe">Marvelous AQL Europe</a><br/><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Natsume Inc.">Natsume Inc.</a><br/></TD>
 							</TR>
 							<TR>
 								<TD>Feature</TD>
-								<TD><a href="default%20table%20text_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
 							</TR>
 							<TR>
 								<TD>Links</TD>
@@ -264,5 +276,10 @@ a:active {
 				</div>
 			</div>
 		</div>
-	</body>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
 </html>
